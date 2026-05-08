@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mallarani-organic-farm.netlify.app/sitemap.xml

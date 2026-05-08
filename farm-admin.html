@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Farm Info Editor | Mallarani Organic Krisha Farm</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f8ef;
+      color: #2f3e2f;
+    }
+
+    header {
+      background-color: #2f5d34;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .admin-section {
+      background-color: white;
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      border: 1px solid #d8e6d1;
+    }
+
+    h1,
+    h2 {
+      margin-top: 0;
+    }
+
+    h2 {
+      color: #2f5d34;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd8c2;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #63b35d;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      margin-right: 8px;
+    }
+
+    button:hover {
+      background-color: #4b9846;
+    }
+
+    .secondary-button {
+      background-color: #2f5d34;
+    }
+
+    .secondary-button:hover {
+      background-color: #244829;
+    }
+
+    .code-output {
+      width: 100%;
+      min-height: 300px;
+      font-family: Consolas, monospace;
+      font-size: 14px;
+      background-color: #1f2a1f;
+      color: #dff4d6;
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .notice {
+      background-color: #e7f6df;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #cbd8c2;
+      line-height: 1.6;
+    }
+
+    .preview-box {
+      background-color: #f4f8ef;
+      border: 1px solid #d8e6d1;
+      border-radius: 12px;
+      padding: 18px;
+      line-height: 1.7;
+    }
+
+    .preview-box strong {
+      color: #2f5d34;
+    }
+
+    @media (max-width: 768px) {
+      button {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mallarani Organic Krisha Farm</h1>
+    <p>Local Farm Info Editor</p>
+  </header>
+
+  <main>
+
+    <section class="admin-section">
+      <h2>How to Use</h2>
+
+      <div class="notice">
+        <p>
+          This page helps you create updated <strong>farm-info.js</strong> code.
+        </p>
+        <p>
+          Edit the farm details below, click <strong>Generate farm-info.js Code</strong>,
+          copy the generated code, paste it into <strong>farm-info.js</strong>, then redeploy to Netlify.
+        </p>
+      </div>
+    </section>
+
+    <section class="admin-section">
+      <h2>Edit Farm Information</h2>
+
+      <label for="farmName">Farm Name</label>
+      <input type="text" id="farmName">
+
+      <label for="farmSlogan">Homepage Slogan</label>
+      <input type="text" id="farmSlogan">
+
+      <label for="farmPhone">Phone Number</label>
+      <input type="text" id="farmPhone">
+
+      <label for="farmWhatsapp">WhatsApp Number with Country Code</label>
+      <input type="text" id="farmWhatsapp">
+
+      <label for="farmEmail">Email</label>
+      <input type="email" id="farmEmail">
+
+      <label for="farmOwner">Owner / Team Name</label>
+      <input type="text" id="farmOwner">
+
+      <label for="farmHours">Visiting Hours</label>
+      <input type="text" id="farmHours">
+
+      <label for="farmLocation">Location Name</label>
+      <input type="text" id="farmLocation">
+
+      <label for="farmMapLink">Google Maps Link</label>
+      <input type="text" id="farmMapLink">
+
+      <button onclick="updatePreview()">Update Preview</button>
+      <button class="secondary-button" onclick="resetDefault()">Reset Default</button>
+    </section>
+
+    <section class="admin-section">
+      <h2>Preview</h2>
+
+      <div class="preview-box" id="previewBox"></div>
+    </section>
+
+    <section class="admin-section">
+      <h2>Generated farm-info.js Code</h2>
+
+      <button onclick="generateCode()">Generate farm-info.js Code</button>
+      <button class="secondary-button" onclick="copyCode()">Copy Code</button>
+
+      <textarea class="code-output" id="codeOutput" readonly></textarea>
+    </section>
+
+  </main>
+
+  <script>
+    const defaultFarmInfo = {
+      name: "Mallarani Organic Krisha Farm",
+      slogan: "Pure Organic Food From Our Farm To Your Home",
+      phone: "9844959890",
+      whatsappNumber: "919844959890",
+      email: "samanpasanakarmi@gmail.com",
+      owner: "Mr. Gopal Prasad Nakarmi and family",
+      visitingHours: "Sunday – Saturday, 9 AM – 5 PM",
+      locationName: "Mallarani",
+      mapLink: "https://maps.app.goo.gl/gGy54xaws6QoNezY6"
+    };
+
+    function fillForm(info) {
+      document.getElementById("farmName").value = info.name;
+      document.getElementById("farmSlogan").value = info.slogan;
+      document.getElementById("farmPhone").value = info.phone;
+      document.getElementById("farmWhatsapp").value = info.whatsappNumber;
+      document.getElementById("farmEmail").value = info.email;
+      document.getElementById("farmOwner").value = info.owner;
+      document.getElementById("farmHours").value = info.visitingHours;
+      document.getElementById("farmLocation").value = info.locationName;
+      document.getElementById("farmMapLink").value = info.mapLink;
+    }
+
+    function getFormInfo() {
+      return {
+        name: document.getElementById("farmName").value.trim(),
+        slogan: document.getElementById("farmSlogan").value.trim(),
+        phone: document.getElementById("farmPhone").value.trim(),
+        whatsappNumber: document.getElementById("farmWhatsapp").value.trim(),
+        email: document.getElementById("farmEmail").value.trim(),
+        owner: document.getElementById("farmOwner").value.trim(),
+        visitingHours: document.getElementById("farmHours").value.trim(),
+        locationName: document.getElementById("farmLocation").value.trim(),
+        mapLink: document.getElementById("farmMapLink").value.trim()
+      };
+    }
+
+    function validateInfo(info) {
+      if (!info.name || !info.slogan || !info.phone || !info.whatsappNumber || !info.email) {
+        alert("Please fill farm name, slogan, phone, WhatsApp number, and email.");
+        return false;
+      }
+
+      if (!info.owner || !info.visitingHours || !info.locationName || !info.mapLink) {
+        alert("Please fill owner, visiting hours, location name, and Google Maps link.");
+        return false;
+      }
+
+      return true;
+    }
+
+    function updatePreview() {
+      const info = getFormInfo();
+
+      if (!validateInfo(info)) {
+        return;
+      }
+
+      const previewBox = document.getElementById("previewBox");
+
+      previewBox.innerHTML = `
+        <p><strong>Farm Name:</strong> ${info.name}</p>
+        <p><strong>Slogan:</strong> ${info.slogan}</p>
+        <p><strong>Phone:</strong> ${info.phone}</p>
+        <p><strong>WhatsApp:</strong> ${info.whatsappNumber}</p>
+        <p><strong>Email:</strong> ${info.email}</p>
+        <p><strong>Owner / Team:</strong> ${info.owner}</p>
+        <p><strong>Visiting Hours:</strong> ${info.visitingHours}</p>
+        <p><strong>Location:</strong> ${info.locationName}</p>
+        <p><strong>Map Link:</strong> <a href="${info.mapLink}" target="_blank">${info.mapLink}</a></p>
+      `;
+
+      generateCode();
+    }
+
+    function generateCode() {
+      const info = getFormInfo();
+
+      if (!validateInfo(info)) {
+        return;
+      }
+
+      const codeOutput = document.getElementById("codeOutput");
+
+      const code = `const farmInfo = ${JSON.stringify(info, null, 2)};`;
+
+      codeOutput.value = code;
+    }
+
+    function copyCode() {
+      const codeOutput = document.getElementById("codeOutput");
+
+      if (!codeOutput.value.trim()) {
+        generateCode();
+      }
+
+      codeOutput.select();
+      document.execCommand("copy");
+
+      alert("farm-info.js code copied. Paste it into your farm-info.js file.");
+    }
+
+    function resetDefault() {
+      const confirmReset = confirm("Reset all farm information to default values?");
+
+      if (!confirmReset) {
+        return;
+      }
+
+      fillForm(defaultFarmInfo);
+      updatePreview();
+    }
+
+    fillForm(defaultFarmInfo);
+    updatePreview();
+  </script>
+
+</body>
+</html>
