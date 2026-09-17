@@ -121,8 +121,8 @@ Example:
 const farmInfo = {
   name: "Mallarani Organic Krisha Farm",
   slogan: "Pure Organic Food From Our Farm To Your Home",
-  phone: "9844959890",
-  whatsappNumber: "919844959890",
+  phone: "+9779844959890",
+  whatsappNumber: "9779844959890",
   email: "samanpasanakarmi@gmail.com",
   owner: "Mr. Gopal Prasad Nakarmi and family",
   visitingHours: "Sunday – Saturday, 9 AM – 5 PM",
@@ -347,8 +347,8 @@ index.html
 Current Farm Details
 Farm Name: Mallarani Organic Krisha Farm
 Slogan: Pure Organic Food From Our Farm To Your Home
-Phone: 9844959890
-WhatsApp: 919844959890
+Phone: +9779844959890
+WhatsApp: 9779844959890
 Email: samanpasanakarmi@gmail.com
 Owner: Mr. Gopal Prasad Nakarmi and family
 Visiting Hours: Sunday – Saturday, 9 AM – 5 PM

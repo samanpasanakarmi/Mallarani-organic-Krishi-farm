@@ -596,7 +596,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const farmPhoneNumber = typeof farmInfo !== "undefined"
         ? farmInfo.whatsappNumber
-        : "919844959890";
+        : "9779844959890";
 
       const whatsappMessage =
         currentLanguage === "np"
@@ -692,7 +692,7 @@ function orderProduct(productName) {
 
   const farmPhoneNumber = typeof farmInfo !== "undefined"
     ? farmInfo.whatsappNumber
-    : "919844959890";
+    : "9779844959890";
 
   const message =
     currentLanguage === "np"
@@ -704,3 +704,13 @@ function orderProduct(productName) {
 
   window.open(whatsappURL, "_blank");
 }
+// V2: keep the mobile navigation state accessible.
+(() => {
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('navMenu');
+  if (!toggle || !menu) return;
+  const sync = () => toggle.setAttribute('aria-expanded', menu.classList.contains('active') ? 'true' : 'false');
+  toggle.addEventListener('click', () => setTimeout(sync, 0));
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setTimeout(sync, 0)));
+  sync();
+})();

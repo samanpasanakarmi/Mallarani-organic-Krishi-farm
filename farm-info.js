@@ -5,8 +5,8 @@ const farmInfo = {
   slogan: "Pure Organic Food From Our Farm To Your Home",
   sloganNp: "हाम्रो फार्मबाट तपाईंको घरसम्म शुद्ध अर्गानिक खाना",
 
-  phone: "9844959890",
-  whatsappNumber: "919844959890",
+  phone: "+9779844959890",
+  whatsappNumber: "9779844959890",
 
   email: "samanpasanakarmi@gmail.com",
 

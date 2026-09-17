@@ -1,41 +1,20 @@
-const farmProducts = [
+const farmUpdates = [
   {
-    name: "Spinach",
-    nameNp: "पालुङ्गो",
-    price: "₹50 / kg",
-    priceNp: "रु ५० / किलो",
-    status: "Available",
-    statusNp: "उपलब्ध",
-    category: "Vegetables",
-    categoryNp: "तरकारी",
-    description: "Fresh farm spinach available this week.",
-    descriptionNp: "यस हप्ता ताजा फार्मको पालुङ्गो उपलब्ध छ।",
-    image: "images/spinach.jpg"
+    title: "Fresh harvest available",
+    titleNp: "ताजा फसल उपलब्ध",
+    date: "Seasonal update",
+    tag: "Harvest",
+    tagNp: "फसल",
+    description: "Spinach, coriander and turmeric powder are currently listed as available. Please confirm quantity before visiting or ordering.",
+    descriptionNp: "पालुङ्गो, धनियाँ र बेसार पाउडर हाल उपलब्ध सूचीमा छन्। भ्रमण वा अर्डर गर्नु अघि परिमाण पुष्टि गर्नुहोस्।"
   },
   {
-    name: "Coriander",
-    nameNp: "धनियाँ",
-    price: "₹10 / bunch",
-    priceNp: "रु १० / मुठा",
-    status: "Available",
-    statusNp: "उपलब्ध",
-    category: "Herbs",
-    categoryNp: "जडीबुटी",
-    description: "Fresh coriander bunches available from our farm.",
-    descriptionNp: "हाम्रो फार्मबाट ताजा धनियाँका मुठाहरू उपलब्ध छन्।",
-    image: "images/coriander.jpg"
-  },
-  {
-    name: "Turmeric Powder",
-    nameNp: "बेसार पाउडर",
-    price: "₹350 / kg",
-    priceNp: "रु ३५० / किलो",
-    status: "Available",
-    statusNp: "उपलब्ध",
-    category: "Spices",
-    categoryNp: "मसला",
-    description: "Natural turmeric powder prepared with care.",
-    descriptionNp: "सावधानीपूर्वक तयार गरिएको प्राकृतिक बेसार पाउडर।",
-    image: "images/turmeric.jpg"
+    title: "Farm pickup & local delivery",
+    titleNp: "फार्म पिकअप र स्थानीय डेलिभरी",
+    date: "Service update",
+    tag: "Ordering",
+    tagNp: "अर्डर",
+    description: "Farm pickup is available during visiting hours. Contact us on WhatsApp to discuss local delivery before placing an order.",
+    descriptionNp: "भ्रमण समयमा फार्मबाट सामान लिन सकिन्छ। स्थानीय डेलिभरीका लागि अर्डर गर्नु अघि WhatsApp मा सम्पर्क गर्नुहोस्।"
   }
 ];
